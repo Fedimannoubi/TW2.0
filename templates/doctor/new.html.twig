@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Doctor</title>
+
+{% block body %}
+    <h1>Create new Doctor</h1>
+
+    {{ include('doctor/_form.html.twig') }}
+
+    <a href="{{ path('doctor_index') }}">back to list</a>
+{% endblock %}

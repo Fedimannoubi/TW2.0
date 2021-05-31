@@ -6,16 +6,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-/**
- * @Route("/home")
- */
+
+
 class indexController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+      /**
+      * @Route("/")
+      */
     public function index(): Response
     {
-        return $this->render('index.html.twig');
+       return $this->render('index.html.twig');
     }
 }

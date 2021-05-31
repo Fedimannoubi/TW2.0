@@ -15,5 +15,10 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
-    'index' => [[], ['_controller' => 'App\\Controller\\indexController::index'], [], [['text', '/home/']], [], []],
+    'doctor_index' => [[], ['_controller' => 'App\\Controller\\DoctorController::index'], [], [['text', '/doctorsList/']], [], []],
+    'doctor_new' => [[], ['_controller' => 'App\\Controller\\DoctorController::new'], [], [['text', '/doctorsList/new']], [], []],
+    'doctor_show' => [['id'], ['_controller' => 'App\\Controller\\DoctorController::show'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/doctorsList']], [], []],
+    'doctor_edit' => [['id'], ['_controller' => 'App\\Controller\\DoctorController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id'], ['text', '/doctorsList']], [], []],
+    'doctor_delete' => [['id'], ['_controller' => 'App\\Controller\\DoctorController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/doctorsList']], [], []],
+    'app_index_index' => [[], ['_controller' => 'App\\Controller\\indexController::index'], [], [['text', '/']], [], []],
 ];
