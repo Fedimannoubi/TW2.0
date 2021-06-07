@@ -34,12 +34,6 @@ class Schedule
      */
     private $client;
 
-
-    public function __construct()
-    {
-        $this->doctor = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;

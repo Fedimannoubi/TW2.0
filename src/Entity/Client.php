@@ -118,6 +118,6 @@ class Client
         return $this;
     }
     public function __toString() {
-        return $this->id;
+        return ($this->first_name.' '.$this->last_name);
     }
 }
