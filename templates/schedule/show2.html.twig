@@ -11,9 +11,6 @@
         let calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'timeGridWeek',
             locale: 'fr',
-            slotMinTime : "{{ doctor.startTime }}" ,
-            slotMaxTime : "{{ doctor.endTime }}",
-            slotDuration :"{{ doctor.sessionDuration }}",
             height: "auto"
         });
         calendar.render();
@@ -21,7 +18,23 @@
 
     </script>
 {% endblock %}
+<table border="1">
+<tr>
+<td>id</td>
+<td>time</td>
+<td>doctor</td>
+<td>client</td>
+</tr>
+<tr>
+<td>{{schedule.id}}</td>
+<td>{{schedule.appointment|date('d-m-Y H:S')}}</td>
+<td>{{schedule.doctor}}</td>
+<td>{{schedule.client}}</td>
+</tr>
 
+
+
+</table>
     <a href="{{ path('schedule_index') }}">back to list</a>
 
     <a href="{{ path('schedule_edit', {'id': schedule.id}) }}">edit</a>

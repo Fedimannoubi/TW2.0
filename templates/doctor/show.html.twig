@@ -106,6 +106,7 @@
 
 {% endblock %}
 <a href="{{ path('schedule_new') }}">Create new appo</a>
+
 {% block javascript %}
  <script>
 
@@ -114,10 +115,9 @@
         let calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'timeGridWeek',
             locale: 'fr',
-            slotMinTime : "{{ doctor.startTime }}" ,
-            slotMaxTime : "{{ doctor.endTime }}",
-            slotDuration :"{{ doctor.sessionDuration }}",
-            height: "auto"
+			timeZone: 'Europe/Paris',
+            height: "auto",
+			events: {{ data|raw }}
         });
         calendar.render();
       };

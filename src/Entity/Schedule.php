@@ -79,16 +79,7 @@ class Schedule
     {
         return $this->client;
     }
-    /*
-    /**
-     * @return Collection|Doctor[]
-     */
-    /*
-    public function getDoctor(): ?Collection
-    {
-        return $this->doctor;
-    }
-    */
+    
     public function getDoctor(): ?doctor
     {
         return $this->doctor;

@@ -20,10 +20,50 @@ class ScheduleController extends AbstractController
      */
     public function index(ScheduleRepository $scheduleRepository): Response
     {
+
+        $events = $scheduleRepository->findAll();
+       // dd($events);
+        $rdvs =[];
+
+        foreach ($events as $event) {
+            $rdvs[] = [
+                'id'=> $event->getID(),
+                'appointment'=> $event->getappointment()->format('Y-M-D H:i:s'),
+                'start' => $event->getappointment()->format('Y-M-D H:i:s'),
+                'end'=> $event->getappointment()->format('Y-M-D H:i:s')
+            ];
+        }
+
+        $data= json_encode($rdvs);
+
+        //dd( $data);
+
         return $this->render('schedule/index.html.twig', [
             'schedules' => $scheduleRepository->findAll(),
         ]);
     }
+
+    public function getData(ScheduleRepository $scheduleRepository): String
+    {
+        $events = $scheduleRepository->findAll();
+        //dd($event);
+        $rdvs =[];
+
+        foreach ($events as $event) {
+            $rdvs[] = [
+                'id'=> $event->getID(),
+                'appointment'=> $event->getappointment(),
+                'start' => $event->getappointment()->format('Y-M-D H:i:s'),
+                'end'=> $event->getappointment()->format('Y-M-D H:i:s')
+            ];
+        }
+
+        $data= json_encode($rdvs);
+
+
+        return ($data);
+    }
+
 
     /**
      * @Route("/new", name="schedule_new", methods={"GET","POST"})
@@ -53,7 +93,7 @@ class ScheduleController extends AbstractController
      */
     public function show(Schedule $schedule): Response
     {
-        return $this->render('schedule/show.html.twig', [
+        return $this->render('schedule/show2.html.twig', [
             'schedule' => $schedule,
         ]);
     }

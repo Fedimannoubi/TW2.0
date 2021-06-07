@@ -13,6 +13,8 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/client' => [[['_route' => 'client_index', '_controller' => 'App\\Controller\\ClientController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/client/new' => [[['_route' => 'client_new', '_controller' => 'App\\Controller\\ClientController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/doctorsList' => [[['_route' => 'doctor_index', '_controller' => 'App\\Controller\\DoctorController::index'], null, ['GET' => 0], null, true, false, null]],
         '/doctorsList/new' => [[['_route' => 'doctor_new', '_controller' => 'App\\Controller\\DoctorController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/schedule' => [[['_route' => 'schedule_index', '_controller' => 'App\\Controller\\ScheduleController::index'], null, ['GET' => 0], null, true, false, null]],
@@ -36,15 +38,20 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
+                .'|/client/([^/]++)(?'
+                    .'|(*:188)'
+                    .'|/edit(*:201)'
+                    .'|(*:209)'
+                .')'
                 .'|/doctorsList/([^/]++)(?'
-                    .'|(*:193)'
-                    .'|/edit(*:206)'
-                    .'|(*:214)'
+                    .'|(*:242)'
+                    .'|/edit(*:255)'
+                    .'|(*:263)'
                 .')'
                 .'|/schedule/([^/]++)(?'
-                    .'|(*:244)'
-                    .'|/edit(*:257)'
-                    .'|(*:265)'
+                    .'|(*:293)'
+                    .'|/edit(*:306)'
+                    .'|(*:314)'
                 .')'
             .')/?$}sD',
     ],
@@ -56,12 +63,15 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        193 => [[['_route' => 'doctor_show', '_controller' => 'App\\Controller\\DoctorController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        206 => [[['_route' => 'doctor_edit', '_controller' => 'App\\Controller\\DoctorController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        214 => [[['_route' => 'doctor_delete', '_controller' => 'App\\Controller\\DoctorController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        244 => [[['_route' => 'schedule_show', '_controller' => 'App\\Controller\\ScheduleController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        257 => [[['_route' => 'schedule_edit', '_controller' => 'App\\Controller\\ScheduleController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        265 => [
+        188 => [[['_route' => 'client_show', '_controller' => 'App\\Controller\\ClientController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        201 => [[['_route' => 'client_edit', '_controller' => 'App\\Controller\\ClientController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        209 => [[['_route' => 'client_delete', '_controller' => 'App\\Controller\\ClientController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        242 => [[['_route' => 'doctor_show', '_controller' => 'App\\Controller\\DoctorController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        255 => [[['_route' => 'doctor_edit', '_controller' => 'App\\Controller\\DoctorController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        263 => [[['_route' => 'doctor_delete', '_controller' => 'App\\Controller\\DoctorController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        293 => [[['_route' => 'schedule_show', '_controller' => 'App\\Controller\\ScheduleController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        306 => [[['_route' => 'schedule_edit', '_controller' => 'App\\Controller\\ScheduleController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        314 => [
             [['_route' => 'schedule_delete', '_controller' => 'App\\Controller\\ScheduleController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
