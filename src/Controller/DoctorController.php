@@ -74,7 +74,7 @@ class DoctorController extends AbstractController
 
         return $this->render('doctor/edit.html.twig', [
             'doctor' => $doctor,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 

@@ -20,5 +20,10 @@ return [
     'doctor_show' => [['id'], ['_controller' => 'App\\Controller\\DoctorController::show'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/doctorsList']], [], []],
     'doctor_edit' => [['id'], ['_controller' => 'App\\Controller\\DoctorController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id'], ['text', '/doctorsList']], [], []],
     'doctor_delete' => [['id'], ['_controller' => 'App\\Controller\\DoctorController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/doctorsList']], [], []],
+    'schedule_index' => [[], ['_controller' => 'App\\Controller\\ScheduleController::index'], [], [['text', '/schedule/']], [], []],
+    'schedule_new' => [[], ['_controller' => 'App\\Controller\\ScheduleController::new'], [], [['text', '/schedule/new']], [], []],
+    'schedule_show' => [['id'], ['_controller' => 'App\\Controller\\ScheduleController::show'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/schedule']], [], []],
+    'schedule_edit' => [['id'], ['_controller' => 'App\\Controller\\ScheduleController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id'], ['text', '/schedule']], [], []],
+    'schedule_delete' => [['id'], ['_controller' => 'App\\Controller\\ScheduleController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/schedule']], [], []],
     'app_index_index' => [[], ['_controller' => 'App\\Controller\\indexController::index'], [], [['text', '/']], [], []],
 ];

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<title>Schedule index</title>
+
+{% block body %}
+    <h1>Schedule index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Date</th>
+                <th>Doctor</th>
+                <th>Client</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for schedule in schedules %}
+            <tr>
+                <td>{{ schedule.appointment ? schedule.appointment|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{schedule.doctor.firstName}}<span> </span>{{schedule.doctor.lastName}}</td>
+                 <td>{{schedule.client.firstName}}<span> </span>{{schedule.client.lastName}}</td>
+                <td>
+                    <a href="{{ path('schedule_show', {'id': schedule.id}) }}">show</a>
+                    <a href="{{ path('schedule_edit', {'id': schedule.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('schedule_new') }}">Create new</a>
+{% endblock %}

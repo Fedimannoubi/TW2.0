@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<title>Edit Schedule</title>
+
+{% block body %}
+    <h1>Edit Schedule</h1>
+    {{ form_row(form.doctor, { 'attr':{'disabled':'disabled'} }) }}
+    {{ form_row(form.client, { 'attr':{'disabled':'disabled'} }) }}
+    {{ include('schedule/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('schedule/_delete_form.html.twig') }}
+    <a href="{{ path('schedule_index') }}">back to list</a>
+{% endblock %}
