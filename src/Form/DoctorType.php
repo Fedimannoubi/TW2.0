@@ -19,6 +19,9 @@ class DoctorType extends AbstractType
             ->add('last_name', TextType::class)
             ->add('tel', NumberType::class)
             ->add('mail', EmailType::class)
+            ->add('start_time', TextType::class)
+            ->add('end_time', TextType::class)
+            ->add('session_duration', TextType::class)
         ;
     }
 

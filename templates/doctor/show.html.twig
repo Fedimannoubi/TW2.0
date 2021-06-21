@@ -109,7 +109,6 @@
 
 {% block javascript %}
  <script>
-
       window.onload=() =>{
         let calendarEl = document.getElementById('calendar');
         let calendar = new FullCalendar.Calendar(calendarEl, {
@@ -117,7 +116,10 @@
             locale: 'fr',
 			timeZone: 'Europe/Paris',
             height: "auto",
-			events: {{ data|raw }}
+			events: {{ data|raw }},
+			slotDuration: '{{ doctor.sessionDuration }}',
+			slotMinTime : '{{ doctor.startTime }}',
+			slotMaxTime : '{{ doctor.endTime }}'
         });
         calendar.render();
       };
