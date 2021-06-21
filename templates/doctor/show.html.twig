@@ -119,7 +119,12 @@
 			events: {{ data|raw }},
 			slotDuration: '{{ doctor.sessionDuration }}',
 			slotMinTime : '{{ doctor.startTime }}',
-			slotMaxTime : '{{ doctor.endTime }}'
+			slotMaxTime : '{{ doctor.endTime }}',
+			allDaySlot : false,
+			dateClick: function(info) {
+			    alert('Clicked on: ' + info.dateStr);
+			    window.location.href = '../schedule/new';
+  			}
         });
         calendar.render();
       };

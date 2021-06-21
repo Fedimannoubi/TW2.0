@@ -6,6 +6,7 @@ use App\Entity\Schedule;
 use App\Form\ScheduleType;
 use App\Repository\ScheduleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,7 +37,6 @@ class ScheduleController extends AbstractController
 
         $data= json_encode($rdvs);
 
-        //dd( $data);
 
         return $this->render('schedule/index.html.twig', [
             'schedules' => $scheduleRepository->findAll(),
@@ -65,6 +65,7 @@ class ScheduleController extends AbstractController
     }
 
 
+
     /**
      * @Route("/new", name="schedule_new", methods={"GET","POST"})
      */
@@ -75,6 +76,7 @@ class ScheduleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($schedule);
             $entityManager->flush();
@@ -88,6 +90,8 @@ class ScheduleController extends AbstractController
         ]);
     }
 
+
+  
     /**
      * @Route("/{id}", name="schedule_show", methods={"GET"})
      */
