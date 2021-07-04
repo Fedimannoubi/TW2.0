@@ -1,4 +1,9 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_label(form.first_name, 'Prénom : ') }}
+{{ form_widget(form.first_name, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.last_name, 'Nom : ') }}
+{{ form_widget(form.last_name, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.birth_date, 'Date de naissance : ') }}
+{{ form_widget(form.birth_date, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+<button class="btn btn-success pull-right">{{ button_label|default('Ajouter') }}</button>
 {{ form_end(form) }}

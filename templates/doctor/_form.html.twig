@@ -1,4 +1,16 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_label(form.first_name, 'Prénom : ') }}
+{{ form_widget(form.first_name, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.last_name, 'Nom : ') }}
+{{ form_widget(form.last_name, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.tel, 'Téléphone : ') }}
+{{ form_widget(form.tel, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.mail, 'Email :') }}
+{{ form_widget(form.mail, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.start_time, 'De :') }}
+{{ form_widget(form.start_time, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.end_time, 'Jusqu à :') }}
+{{ form_widget(form.end_time, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.session_duration, 'Durée :') }}
+{{ form_widget(form.session_duration, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+<button class="btn btn-success pull-right">{{ button_label|default('Ajouter') }}</button></div>{{ form_end(form) }}

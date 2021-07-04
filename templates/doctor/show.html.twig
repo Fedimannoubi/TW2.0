@@ -12,8 +12,8 @@
 		<link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome.min.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-        <link href="{{asset('calender/lib/main.css')}}" rel='stylesheet' />
-        <script src="{{asset('calender/lib/main.js')}}"></script>
+		<link href="{{asset('calender/lib/main.css')}}" rel='stylesheet'/>
+		<script src="{{asset('calender/lib/main.js')}}"></script>
 	</head>
 
 	<body
@@ -30,12 +30,11 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								</button>
-								<a class="navbar-brand" href="#"><img src="{{asset('img/logo.png')}}" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
 							</div>
 							<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 								<ul class="nav navbar-nav">
 									<li class="active">
-										<a href="#banner">Accueil</a>
+										<a href="{{ path('doctor_index') }}">Accueil</a>
 									</li>
 									<li class="">
 										<a href="#service">Services</a>
@@ -43,10 +42,6 @@
 									<li class="">
 										<a href="#about">A propos</a>
 									</li>
-									<li class="">
-										<a href="#testimonial">Notes</a>
-									</li>
-									<!-- Authentification <li class=""><a href="">Se déconnecter</a></li> -->
 								</ul>
 							</div>
 						</div>
@@ -56,118 +51,143 @@
 					<div class="row">
 						<div class="banner-info">
 							<div class="banner-logo text-center">
-								
-							<div class="banner-text text-center">
-								<h3 class="white">select a doctor to consolt</h3>
-							</div>
-							<div class="overlay-detail text-center">
-								<a href="#service">
-									<i class="fa fa-angle-down"></i>
-								</a>
+								<div class="banner-text text-center">
+									<h1 class="white">Consulter votre médecin</h1>
+								</div>
+								<div class="overlay-detail text-center">
+									<a href="#service">
+										<i class="fa fa-angle-down"></i>
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<!--/ banner-->
-		<!--service-->
-		<section id="service" class="section-padding">
-			<div class="container">
-				<div class="row">
+			</section>
+			<!--/ banner-->
+			<!--service-->
+			<section id="service" class="section-padding">
+				<div class="container">
+					<div class="row">
 
-{% block body %}
-    <h1>Doctor</h1>
+						{% block body %}
+							<h1>Détails du médecin</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ doctor.id }}</td>
-            </tr>
-            <tr>
-                <th>First_name</th>
-                <td>{{ doctor.firstName }}</td>
-            </tr>
-            <tr>
-                <th>Last_name</th>
-                <td>{{ doctor.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Tel</th>
-                <td>{{ doctor.tel }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ doctor.mail }}</td>
-            </tr>
-        </tbody>
-    </table>
+							<table class="table">
+								<tbody>
+									<tr>
+										<th>Identifiant</th>
+										<td>{{ doctor.id }}</td>
+									</tr>
+									<tr>
+										<th>Prénom</th>
+										<td>{{ doctor.firstName }}</td>
+									</tr>
+									<tr>
+										<th>Nom</th>
+										<td>{{ doctor.lastName }}</td>
+									</tr>
+									<tr>
+										<th>Téléphone</th>
+										<td>{{ doctor.tel }}</td>
+									</tr>
+									<tr>
+										<th>Email</th>
+										<td>{{ doctor.mail }}</td>
+									</tr>
+								</tbody>
+							</table>
 
-{% endblock %}
-<a href="{{ path('schedule_new') }}">Create new appo</a>
+						{% endblock %}
+						<div class="col-md-6"></div>
+						<div class="col-md-4">
+							<a href="{{ path('schedule_new') }}" class="btn btn-success">
+								<span>Prendre un rendez-vous</span>
+							</a>
+						</div>
+						<div class="col-md-4"></div>
 
-{% block javascript %}
- <script>
-      window.onload=() =>{
-        let calendarEl = document.getElementById('calendar');
-        let calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'timeGridWeek',
-            locale: 'fr',
-			timeZone: 'Europe/Paris',
-            height: "auto",
-			events: {{ data|raw }},
-			slotDuration: '{{ doctor.sessionDuration }}',
-			slotMinTime : '{{ doctor.startTime }}',
-			slotMaxTime : '{{ doctor.endTime }}',
-			allDaySlot : false,
-			dateClick: function(info) {
-			    alert('Clicked on: ' + info.dateStr);
-			    window.location.href = '../schedule/new';
-  			}
-        });
-        calendar.render();
-      };
+						<br><br>
+						<br>
+						{% block javascript %}
+							<script>
+								window.onload = () => {
+let calendarEl = document.getElementById('calendar');
+let calendar = new FullCalendar.Calendar(calendarEl, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+timeZone: 'Europe/Paris',
+height: "auto",
+events: {{ data|raw }},
+slotDuration: '{{ doctor.sessionDuration }}',
+slotMinTime: '{{ doctor.startTime }}',
+slotMaxTime: '{{ doctor.endTime }}',
+allDaySlot: false,
+dateClick: function (info) {
+alert('Clicked on: ' + info.dateStr);
+window.location.href = '../schedule/new';
+}
+});
+calendar.render();
+};
+							</script>
+						{% endblock %}
+						<div id='calendar'></div>
+						<div class="row">
+							<br>
+							<div class="pull-left">
+								<a href="{{ path('doctor_index') }}" class="btn btn-primary">
+									<span>Liste des médecins</span>
+								</a>
+							</div>
+							<div class="pull-right">
 
-    </script>
-{% endblock %}
-<div id='calendar'></div>
-<a href="{{ path('doctor_index') }}">back to list</a>
+								<a href="{{ path('doctor_edit', {'id': doctor.id}) }}" class="btn btn-warning">
+									<span>Modifier ce médecin</span>
+								</a>
 
-    <a href="{{ path('doctor_edit', {'id': doctor.id}) }}">edit</a>
+							</div>
+						</div>
+						<div class="row">
+							<br>
 
-    {{ include('doctor/_delete_form.html.twig') }}
-</div>
-				</div>
-			</div>
-		</section>
-		<!--/ service-->
-		<section id="cta-2" class="section-padding">
-			<div class="container">
-				<div class=" row">
-					<div class="col-md-2"></div>
-					<div class="text-right-md col-md-4 col-sm-4">
-						<h2 class="section-title white lg-line">« A few words<br>
-							about us »</h2>
-					</div>
-					<div class="col-md-4 col-sm-5">
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a typek
-						<p class="text-right text-primary">
-							<i>— Medilap Healthcare</i>
-						</p>
-					</div>
-					<div class="col-md-2"></div>
-				</div>
-			</div>
-		</section>
-		<!--cta-->
+							<div class="pull-right">
+								<a href="{{ path('doctor_delete', {'id': doctor.id}) }}" class="btn btn-danger">
+									<span>Supprimer ce médecin</span>
+								</a>
+							</div>
 
-		<script src="{{asset('js/jquery.min.js')}}"></script>
-		<script src="{{asset('js/jquery.easing.min.js')}}"></script>
-		<script src="{{asset('js/bootstrap.min.js')}}"></script>
-		<script src="{{asset('js/custom.js')}}"></script>
-		<script src="{{asset('contactform/contactform.js')}}"></script>
+						</div>
+					</section>
+					<!--/ service-->
+					<!--about-->
 
+					<section id="cta-2" class="section-padding">
+						<div class="container">
+							<div class=" row">
+								<div class="col-md-2"></div>
+								<div class="text-right-md col-md-4 col-sm-4">
+									<h2 class="section-title white lg-line">A propos !<br></h2>
+								</div>
+								<div class="col-md-4 col-sm-5">
+									Notre objectif final est d'améliorer l'accès aux soins en mettant à votre disposition des outils simples et intuitifs pour que chacun devienne acteur de sa santé et de son bien-être.
+									<p class="text-right text-primary">
+										<i>— MedRDV</i>
+									</p>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+						</div>
+					</section>
+					<!--about-->
+
+					<script src="{{asset('js/jquery.min.js')}}"></script>
+					<script src="{{asset('js/jquery.easing.min.js')}}"></script>
+					<script src="{{asset('js/bootstrap.min.js')}}"></script>
+					<script src="{{asset('js/custom.js')}}"></script>
+					<script src="{{asset('contactform/contactform.js')}}"></script>
+				</body>
+			</html>
+		</body>
 	</body>
-
 </html>

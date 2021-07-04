@@ -19,6 +19,7 @@ class ScheduleType extends AbstractType
             ->add('appointment', DateTimeType::class,[
                 'date_widget' => 'single_text',
                 'hours' => range(8,18)
+                
             ])
             ->add('doctor')
             ->add('client')

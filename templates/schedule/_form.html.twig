@@ -1,4 +1,9 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_label(form.appointment, 'Sélectionner Rendez-vous : ') }}
+{{ form_widget(form.appointment, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.doctor, 'Sélectionner le médecin : ') }}
+{{ form_widget(form.doctor, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+{{ form_label(form.client, 'Sélectionner le patient : ') }}
+{{ form_widget(form.client, {'attr': {'class': 'form-control','style': 'width:40%;'}}) }}
+<button class="btn btn-success pull-right">{{ button_label|default('Ajouter') }}</button>
 {{ form_end(form) }}
